@@ -1,0 +1,25 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Env files (chứa API key, secret)
+.env
+.env.*.local
+
+# Editor configs cá nhân
+.vscode/
+.idea/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# File hệ điều hành sinh ra
+Thumbs.db
+.DS_Store
