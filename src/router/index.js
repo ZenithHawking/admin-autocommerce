@@ -292,7 +292,7 @@ const routes = [
       },
         {
             path: '/pages/detail',
-            name: 'Index',
+            name: 'Detail',
             component: () => import('@/views/pages/Products/Detail.vue'),
       },
       {
