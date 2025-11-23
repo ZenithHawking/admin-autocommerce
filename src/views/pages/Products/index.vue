@@ -34,18 +34,33 @@
   </CCard>
 </template>
 
-<script>
-export default {
-  name: "Products",
-  data() {
-    return {
-      products: [
-        { ten: "Honda Civic", dongxe: "Sedan", giatien: "700,000,000", nguoiban: "@mdo" },
-        { ten: "Toyota Vios", dongxe: "Sedan", giatien: "550,000,000", nguoiban: "@fat" },
-        { ten: "Mazda CX5", dongxe: "SUV", giatien: "850,000,000", nguoiban: "@twitter" },
-      ],
-    };
-  },
+<script setup>
+import { ref, onMounted } from "vue";
+
+const products = ref([]);
+
+const getProducts = async () => {
+  try {
+    const response = await fetch("https://apihoavan.xyz/api/products");
+    const data = await response.json();
+    products.value = data.map(item => ({
+      ten: item.title,
+      dongxe: item.make,
+      giatien: item.price,
+      nguoiban: item.seller || "-", // nếu API có seller
+    }));
+  } catch (error) {
+    console.error("Lỗi khi lấy dữ liệu:", error);
+  }
 };
+
+// Hàm thao tác nút
+const editProduct = (product) => console.log("Chỉnh sửa:", product);
+const deleteProduct = (product) => console.log("Xóa:", product);
+const viewDetails = (product) => console.log("Chi tiết:", product);
+
+onMounted(() => {
+  getProducts();
+});
 </script>
 
