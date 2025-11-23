@@ -283,11 +283,7 @@ const routes = [
     path: '/pages',
     redirect: '/pages/404',
     name: 'Pages',
-    component: {
-      render() {
-        return h(resolveComponent('router-view'))
-      },
-    },
+   component: DefaultLayout,
     children: [
          {
             path: '/pages/products',
